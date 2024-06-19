@@ -9,8 +9,9 @@ jobs:
       - image: circleci/node:14-browsers
     steps:
       - checkout
-      - node/install-packages:
-          pkg-manager: npm
+      - run:
+          name: Install all dependencies
+          command: npm install
       - run:
           name: Install Playwright browsers
           command: npx playwright install

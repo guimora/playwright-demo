@@ -5,31 +5,10 @@ orbs:
 
 jobs:
   build_and_test:
-    executor: node/default
+    docker:
+      - image: circleci/node:14-browsers
     steps:
       - checkout
-      - run:
-          name: Install system dependencies for Playwright
-          command: sudo apt-get update && sudo apt-get install -y \
-                    libnss3 \
-                    libnspr4 \
-                    libatk1.0-0 \
-                    libatk-bridge2.0-0 \
-                    libcups2 \
-                    libdrm2 \
-                    libatspi2.0-0 \
-                    libx11-6 \
-                    libxcomposite1 \
-                    libxdamage1 \
-                    libxext6 \
-                    libxfixes3 \
-                    libxrandr2 \
-                    libgbm1 \
-                    libxcb1 \
-                    libxkbcommon0 \
-                    libpango-1.0-0 \
-                    libcairo2 \
-                    libasound2
       - node/install-packages:
           pkg-manager: npm
       - run:

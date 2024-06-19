@@ -7,50 +7,17 @@ jobs:
       - image: cimg/base:2023.03
     steps:
       - checkout
-      - run:
-          name: Install system dependencies for Playwright
-          command: sudo apt-get update && sudo apt-get install -y \
-                    libnss3 \
-                    libnspr4 \
-                    libatk-bridge2.0-0 \
-                    libatspi2.0-0 \
-                    libgbm1 \
-                    libxkbcommon0 \
-                    libasound2
-      - run:
-          name: Install dependencies
-          command: npm install
-
+      - run: npm i
   test:
     docker:
       - image: cimg/base:2023.03
     steps:
       - checkout
-      - run:
-          name: Install system dependencies for Playwright
-          command: sudo apt-get update && sudo apt-get install -y \
-                    libnss3 \
-                    libnspr4 \
-                    libatk-bridge2.0-0 \
-                    libatspi2.0-0 \
-                    libgbm1 \
-                    libxkbcommon0 \
-                    libasound2
-      - run:
-          name: Install dependencies
-          command: npm install
-      - run:
-          name: Install Playwright browsers
-          command: npx playwright install
-      - run:
-          name: Run tests
-          command: npx playwright test
+      - run: npm run test
 
 # Orchestrate our job run sequence
 workflows:
   build_and_test:
     jobs:
       - build
-      - test:
-          requires:
-            - build
+      - test

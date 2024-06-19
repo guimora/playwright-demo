@@ -1,0 +1,21 @@
+{
+  "name": "playwright-meetup-gdl",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test-example": "npx playwright test",
+    "test-codegen": "npx playwright codegen https://www.saucedemo.com/v1/",
+    "test": "npx playwright test example.spec.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@playwright/test": "^1.44.1",
+    "@types/node": "^20.14.2"
+  },
+  "dependencies": {
+    "dotenv": "^16.4.5"
+  }
+}

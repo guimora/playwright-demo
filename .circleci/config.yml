@@ -7,6 +7,9 @@ jobs:
     steps:
       - checkout
       - run:
+          name: Install system dependencies for Playwright
+          command: sudo npx playwright install-deps
+      - run:
           name: Install dependencies
           command: npm install
       - run:
